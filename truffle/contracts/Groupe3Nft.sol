@@ -32,11 +32,11 @@ contract GROUPE3 is ERC721, ERC721URIStorage, Ownable {
         _totalImagesAvailable = _imageURIs.length; // Initialisation avec le nombre total d'images
     }
 
-    function safeMint(address to) public onlyOwner {
+    function safeMint() public onlyOwner {
         require(_totalImagesAvailable > 0, "All images have been assigned"); // Vérification du nombre d'images disponibles
 
         uint256 tokenId = _nextTokenId++;
-        _safeMint(to, tokenId);
+        _safeMint(msg.sender, tokenId);
 
         uint256 imageIndex = _randomIndex(tokenId);
         _setTokenURI(tokenId, _imageURIs[imageIndex]);
