@@ -11,6 +11,7 @@ export default function App() {
   return (
     <ThirdwebProvider
       activeChain={"mumbai"}
+      desiredChainId={80001}
       supportedWallets={[
         metamaskWallet({
           recommended: true,
