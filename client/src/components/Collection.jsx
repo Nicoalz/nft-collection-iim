@@ -51,7 +51,7 @@ function Collection() {
   return (
     <div className="min-h-screen flex flex-col pt-20 items-center bg-blue-100">
       <div className="text-center flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-6">The whole NFT Collection</h1>
+        <h1 className="text-4xl font-bold mb-6">All minted NFTs of the Collection</h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
           {nfts.map((nft, index) => (
             <div
