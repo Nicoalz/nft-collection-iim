@@ -29,16 +29,13 @@ function Collection() {
           groupe3ContractAddress,
           groupe3ContractAbi
         );
-        console.log({ contract });
         const [tokenIds, ipfsURI] = await contract.call("getAllCollectionData");
-        console.log({ tokenIds, ipfsURI });
         const nfts = tokenIds.map((tokenId, index) => {
           return {
             id: tokenIds[index].toString(),
             ipfsURI: convertIpfsUriToHttpUrl(ipfsURI[index]),
           };
         });
-        console.log({ nfts });
         setNfts(nfts);
       } catch (error) {
         console.error("Failed to fetch NFTs: ", error);
@@ -51,7 +48,9 @@ function Collection() {
   return (
     <div className="min-h-screen flex flex-col pt-20 items-center bg-blue-100">
       <div className="text-center flex flex-col items-center">
-        <h1 className="text-4xl font-bold mb-6">All minted NFTs of the Collection</h1>
+        <h1 className="text-4xl font-bold mb-6">
+          All minted NFTs of the Collection
+        </h1>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-6">
           {nfts.map((nft, index) => (
             <div
@@ -59,7 +58,7 @@ function Collection() {
               className="nft-item bg-white rounded-lg shadow-lg p-4 flex flex-col items-center"
             >
               <img
-                src='https://ipfs.io/ipfs/QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE'
+                src={nft.ipfsURI}
                 alt={nft.ipfsURI}
                 className="w-32 h-32 object-cover rounded-md mb-4"
               />
