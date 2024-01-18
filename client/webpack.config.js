@@ -9,12 +9,14 @@ module.exports = {
   entry: "./src/index.jsx",
   output: {
     path: path.resolve(__dirname, "build"),
+    filename: "bundle.js", // Ajout du nom du fichier de sortie
   },
   resolve: { extensions },
   devServer: {
     client: {
       overlay: false,
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -32,7 +34,11 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader", // Ajout de postcss-loader pour traiter Tailwind CSS
+        ],
       },
     ],
   },
